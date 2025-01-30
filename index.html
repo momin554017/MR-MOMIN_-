@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Views Booster</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #ff4500;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e03e00;
+        }
+        .response {
+            margin-top: 15px;
+            font-size: 18px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🔥 TikTok Views Booster 🔥</h2>
+        <input type="text" id="username" placeholder="আপনার TikTok ইউজারনেম দিন">
+        <input type="text" id="videoLink" placeholder="আপনার TikTok ভিডিও লিংক দিন">
+        <button onclick="sendViews()">💥 ভিউ বাড়ান</button>
+        <div class="response" id="response"></div>
+    </div>
+
+    <script>
+        function sendViews() {
+            let username = document.getElementById("username").value;
+            let videoLink = document.getElementById("videoLink").value;
+            let responseDiv = document.getElementById("response");
+
+            if (username === "" || videoLink === "") {
+                responseDiv.innerHTML = "⚠️ ইউজারনেম ও ভিডিও লিংক দিতে হবে!";
+                responseDiv.style.color = "red";
+                return;
+            }
+
+            let apiUrl = `https://arefin.my.id/Tik_Tok.php?user=${username}&link=${videoLink}`;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    responseDiv.innerHTML = `✅ ${data.message}`;
+                    responseDiv.style.color = "green";
+                })
+                .catch(error => {
+                    responseDiv.innerHTML = "❌ সমস্যা হয়েছে, পরে চেষ্টা করুন!";
+                    responseDiv.style.color = "red";
+                });
+        }
+    </script>
+</body>
+</html>
